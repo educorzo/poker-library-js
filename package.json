@@ -1,0 +1,33 @@
+{
+  "name": "poker-library",
+  "version": "1.0.0",
+  "description": "Rules of poker",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.conf"
+  },
+  "keywords": [],
+  "author": "ecorzo",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "eslint": "^7.7.0",
+    "eslint-loader": "^4.0.2",
+    "karma": "^5.1.1",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-eslint": "^2.2.0",
+    "karma-jasmine": "^4.0.1",
+    "karma-jasmine-html-reporter": "^1.5.4",
+    "karma-sourcemap-loader": "^0.3.8",
+    "karma-webpack": "^4.0.2",
+    "webpack": "^4.44.1"
+  },
+  "dependencies": {
+    "eslint-plugin-compat": "^3.8.0",
+    "webpack-karma-jasmine": "^4.0.0"
+  }
+}

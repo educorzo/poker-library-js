@@ -1,14 +1,12 @@
+import Rank from './Rank.js';
+
 export default class Card {
   constructor(rank, suit) {
-    this._rank = rank;
+    this._rank = new Rank(rank);
     this._suit = suit;
   }
 
   compareTo(that) {
-    if(this._rank == 'A') {
-      return 1;
-    }
-
-    return 0;
+    return this._rank.compareTo(that._rank);
   }
 }

@@ -30,4 +30,12 @@ describe('Rank', function (){
       });
     });
   });
+
+  describe('toString', function () {
+    it('should return a string with rank value', function () {
+      let rank = new Rank('3');
+      
+      expect(rank.toString()).toEqual('3');
+    });
+  });
 });

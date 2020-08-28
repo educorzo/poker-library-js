@@ -27,6 +27,10 @@ export default class Rank {
     return this._rank === value;
   }
 
+  toString() {
+      return this._rank.toString();
+  }
+
   static isValid(rank) {
     return rank !== undefined && rank.length == 1 && Rank.validRanks.includes(rank);
   }

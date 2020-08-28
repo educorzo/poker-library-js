@@ -9,7 +9,7 @@ export default class Rank {
   }
 
   compareTo(that) {
-    if(this._rank == 'A') {
+    if(this._rank === 'A') {
       return 1;
     }
 
@@ -17,8 +17,10 @@ export default class Rank {
   }
 
   static isValid(rank) {
-    let validRanks = new Set(['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']);
+  //  let validRanks = new Set(['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']);
 
-    return rank !== undefined && rank.length == 1 && validRanks.has(rank);
+    return rank !== undefined && rank.length == 1 && Rank.validRanks.has(rank);
   }
 }
+
+Rank.validRanks = new Set(['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']);

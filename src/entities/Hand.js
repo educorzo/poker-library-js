@@ -12,4 +12,14 @@ export default class Hand {
 
     return thisFirstCard.compareTo(thatFirstCard);
   }
+
+  toString(){
+    let result = '';
+
+    for (var card of this._cards) {
+        result += card.toString() + ' ';
+    }
+
+    return result.substring(0, result.length - 1);;
+  }
 }

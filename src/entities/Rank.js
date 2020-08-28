@@ -1,5 +1,10 @@
 export default class Rank {
+
   constructor(rank) {
+    if(!Rank.isValid(rank)) {
+      throw new Error(`${rank} is not a valid rank`);
+    }
+
     this._rank = rank;
   }
 
@@ -9,5 +14,11 @@ export default class Rank {
     }
 
     return 0;
+  }
+
+  static isValid(rank) {
+    let validRanks = new Set(['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']);
+
+    return rank !== undefined && rank.length == 1 && validRanks.has(rank);
   }
 }

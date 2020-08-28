@@ -10,7 +10,13 @@ export default class Rank {
 
   compareTo(that) {
     let thisValue = Rank.validRanks.findIndex(this.areEqual, this),
+      thatValue;
+
+    if(that !== undefined) {
       thatValue = Rank.validRanks.findIndex(that.areEqual, that);
+    } else {
+      thatValue = -1;
+    }
 
     if(thisValue > thatValue) {
       return 1;

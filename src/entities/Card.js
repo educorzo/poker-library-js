@@ -7,7 +7,11 @@ export default class Card {
   }
 
   compareTo(that) {
-    return this._rank.compareTo(that._rank);
+    if(that !== undefined) {
+      return this._rank.compareTo(that._rank);
+    }
+
+    return 1;
   }
 
   toString() {

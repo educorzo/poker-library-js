@@ -8,6 +8,10 @@ export default class Rank {
     this._rank = rank;
   }
 
+  getRank() {
+    return this._rank;
+  }
+
   compareTo(that) {
     let thisValue = Rank.validRanks.findIndex(this.areEqual, this),
       thatValue;

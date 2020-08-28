@@ -2,7 +2,7 @@ import Rank from './Rank.js';
 
 export default class Card {
   constructor(rank, suit) {
-    this._rank = new Rank(rank);
+    this._rank = rank;
     this._suit = suit;
   }
 

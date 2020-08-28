@@ -9,4 +9,8 @@ export default class Card {
   compareTo(that) {
     return this._rank.compareTo(that._rank);
   }
+
+  toString() {
+    return this._rank.toString() + this._suit;
+  }
 }

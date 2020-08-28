@@ -9,18 +9,27 @@ export default class Rank {
   }
 
   compareTo(that) {
-    if(this._rank === 'A') {
+    let thisValue = Rank.validRanks.findIndex(this.areEqual, this),
+      thatValue = Rank.validRanks.findIndex(that.areEqual, that);
+
+    if(thisValue > thatValue) {
       return 1;
+    }
+
+    if(thisValue < thatValue) {
+      return -1;
     }
 
     return 0;
   }
 
-  static isValid(rank) {
-  //  let validRanks = new Set(['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']);
+  areEqual(value) {
+    return this._rank === value;
+  }
 
-    return rank !== undefined && rank.length == 1 && Rank.validRanks.has(rank);
+  static isValid(rank) {
+    return rank !== undefined && rank.length == 1 && Rank.validRanks.includes(rank);
   }
 }
 
-Rank.validRanks = new Set(['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']);
+Rank.validRanks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'];

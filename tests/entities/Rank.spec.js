@@ -29,11 +29,5 @@ describe('Rank', function (){
         expect(Rank.isValid(1)).toBeFalsy();
       });
     });
-
-    describe('and the rank exists on poker', function () {
-      it('should return true', function () {
-        expect(Rank.isValid('Q')).toBeTruthy();
-      });
-    });
   });
 });

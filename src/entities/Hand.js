@@ -11,8 +11,8 @@ export default class Hand {
   }
 
   compareTo(that) {
-    let thisFirstCard = this._cards.values().next().value,
-      thatFirstCard = that._cards.values().next().value;
+    let thisFirstCard = this._cards.values().next().next().value,
+      thatFirstCard = that._cards.values().next().next().value;
 
     return thisFirstCard.compareTo(thatFirstCard);
   }

@@ -3,7 +3,11 @@ import Rank from './Rank.js';
 
 export default class Hand {
   constructor(cards) {
-    this._cards = cards;
+    if(cards !== undefined) {
+      this._cards = cards;
+    } else {
+      throw new Error('Undefined hand is not allowed');
+    }
   }
 
   compareTo(that) {

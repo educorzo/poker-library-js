@@ -19,20 +19,4 @@ describe('Comparing two hands', function () {
 			});
  		});
 	});
-
-	describe('and there is a pair', function () {
-		const testCases = [
-    	{ hand1: '2d 2h 3d 7s 5h', hand2: 'Ad 2s 3s 7d 5c', winnerHand: 'player 1' }
-		];
-
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
- 		});
-	});
 });

@@ -5,7 +5,8 @@ describe('Comparing two hands', function () {
 		const testCases = [
     	{ hand1: '2d Ad 3d 7s 5h', hand2: '4d 2s 3s 7d 5c', winnerHand: 'player 1' },
     	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: 'player 2' },
-			{ hand1: '2d Ad 3d 7s 5h', hand2: '2s Ah 3s 7d 5s', winnerHand: 'both'}
+			{ hand1: '2d Ad 3d 7s 5h', hand2: '2s Ah 3s 7d 5s', winnerHand: 'both'},
+			{ hand1: 'Ad 4h 3d 8s 5h', hand2: 'Ah 2s 3s 7d 5s', winnerHand: 'player 1'}, //Tie in A card
 		];
 
 		testCases.forEach((test, index) => {

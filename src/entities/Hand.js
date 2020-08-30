@@ -18,10 +18,17 @@ export default class Hand {
   compareTo(that) {
     let thisHand = HighCardResolver.resolveHighCard(this),
       thatHand = HighCardResolver.resolveHighCard(that),
-      thisFirstCard = thisHand._cards.values().next().value,
-      thatFirstCard = thatHand._cards.values().next().value;
+      index = 0,
+      result = 0;
 
-    return thisFirstCard.compareTo(thatFirstCard);
+      for(index; index < 5; index++) {
+        result = thisHand._cards[index].compareTo(thatHand._cards[index]);
+        if(result !== 0) {
+          return result;
+        }
+      }
+      
+    return result;
   }
 
   toString(){

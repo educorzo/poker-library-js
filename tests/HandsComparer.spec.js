@@ -2,10 +2,16 @@ import * as Poker from './../src/index.js';
 
 describe('Comparing two hands', function () {
 	describe('and there is nothing special', function () {
-		it('should win the hand with highest card', function () {
-			let winnerHand = Poker.compareTwoHands('2d Ad 3d 7s 5h', '4d 2s 3s 7d 5c');
+		const testCases = [
+    	{ hand1: '2d Ad 3d 7s 5h', hand2: '4d 2s 3s 7d 5c', winnerHand: 'player 1' },
+    	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: 'player 2' }];
 
-			expect(winnerHand).toEqual('2d Ad 3d 7s 5h');
-		});
+		testCases.forEach((test, index) => {
+			it('should win the hand with highest card', () =>  {
+				let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+				expect(winnerHand).toEqual(test.winnerHand);
+			});
+ 		});
 	});
 });

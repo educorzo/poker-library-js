@@ -8,4 +8,10 @@ describe('HighCardResolver', function () {
 
     expect(HighCardResolver.resolveHighCard(hand).toString()).toEqual('Ad Qh Js 3d 2d');
   });
+
+  it('should return the five most important cards', function () {
+    let hand = HandParser.parseHand('2d 3d Ad Js Qh 9d 5h');
+
+    expect(HighCardResolver.resolveHighCard(hand).toString()).toEqual('Ad Qh Js 9d 5h');
+  });
 });

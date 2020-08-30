@@ -1,6 +1,5 @@
 import Card from './Card.js';
 import Rank from './Rank.js';
-import HighCardResolver from './../resolvers/HighCardResolver.js';
 
 export default class Hand {
   constructor(cards) {
@@ -14,9 +13,9 @@ export default class Hand {
   getCards() {
     return this._cards;
   }
-
+/*
   compareTo(that) {
-    let thisHand = HighCardResolver.resolveHighCard(this),
+    /*let thisHand = HighCardResolver.resolveHighCard(this),
       thatHand = HighCardResolver.resolveHighCard(that),
       index = 0,
       result = 0;
@@ -27,10 +26,10 @@ export default class Hand {
           return result;
         }
       }
-      
+
     return result;
   }
-
+*/
   toString(){
     let result = '';
 

@@ -1,9 +1,11 @@
 import * as HandParser from './parsers/HandParser.js';
+import HandsComparer from './HandsComparer.js';
 
 export function compareTwoHands(player1, player2) {
-  let hand1 = HandParser.parseHand(player1),
+  let handsComparer = new HandsComparer(),
+    hand1 = HandParser.parseHand(player1),
     hand2 = HandParser.parseHand(player2),
-    result = hand1.compareTo(hand2);
+    result = handsComparer.compare(hand1, hand2);
 
   if(result === 1) {
     return 'player 1';

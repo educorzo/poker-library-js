@@ -7,10 +7,12 @@ describe('Comparing two hands', function () {
     	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: 'player 2' }];
 
 		testCases.forEach((test, index) => {
-			it('should win the hand with highest card', () =>  {
-				let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
 
-				expect(winnerHand).toEqual(test.winnerHand);
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
 			});
  		});
 	});

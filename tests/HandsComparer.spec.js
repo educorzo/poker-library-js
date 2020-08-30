@@ -4,7 +4,9 @@ describe('Comparing two hands', function () {
 	describe('and there is nothing special', function () {
 		const testCases = [
     	{ hand1: '2d Ad 3d 7s 5h', hand2: '4d 2s 3s 7d 5c', winnerHand: 'player 1' },
-    	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: 'player 2' }];
+    	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: 'player 2' },
+			{ hand1: '2d Ad 3d 7s 5h', hand2: '2s Ah 3s 7d 5s', winnerHand: 'both'}
+		];
 
 		testCases.forEach((test, index) => {
 			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {

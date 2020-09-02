@@ -38,4 +38,23 @@ describe('Comparing two hands', function () {
 			});
 		});
 	});
+
+	describe('and there is two pairs', function () {
+		const testCases = [
+			{ hand1: '2d 2h 3d 3s 5h', hand2: 'Ac As 3s 7d 5c', winnerHand: 'player 1' },
+			{ hand1: 'Ad As 3s 7d 5c', hand2: '2d 2h 3d 3s 5h', winnerHand: 'player 2' },
+			{ hand1: '2d 2h 3d 3c 5h', hand2: 'Ad As 3s 3h 5c', winnerHand: 'player 2' },
+			{ hand1: 'Ad Ah Qd Qs 5h', hand2: 'Ad As Qc Qh 2c', winnerHand: 'player 1' },
+		];
+
+		testCases.forEach((test, index) => {
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
+			});
+		});
+	});
 });

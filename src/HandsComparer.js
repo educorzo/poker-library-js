@@ -1,21 +1,44 @@
 import Card from './entities/Card.js';
 import HighCardResolver from './resolvers/HighCardResolver.js';
 import PairResolver from './resolvers/PairResolver.js';
+import TwoPairsResolver from './resolvers/TwoPairsResolver.js';
 
 export default class HandsComparer {
 
    compare(hand1, hand2) {
      let bestCards1, bestCards2, result = 0;
-
-     result = this.resolvePair(hand1, hand2);
+     result = this.resolveTwoPairs(hand1, hand2);
 
      if(result == 0) {
-       return this.resolveHighCard(hand1, hand2);
+       result = this.resolvePair(hand1, hand2);
+       if(result == 0) {
+         return this.resolveHighCard(hand1, hand2);
+       }
+       return result;
      } else {
        return result;
      }
   }
 
+  /*private*/
+  resolveTwoPairs(hand1, hand2) {
+    let bestCards1, bestCards2;
+     bestCards1 = TwoPairsResolver.tryResolveTwoPairs(hand1);
+     bestCards2 = TwoPairsResolver.tryResolveTwoPairs(hand2);
+
+     if(bestCards1.length !== 0) {
+       if(bestCards2.length !== 0) {
+         return this.resolveByHighestCard(bestCards1, bestCards2);
+       }
+       return 1;
+     } else if(bestCards2.length !== 0) {
+       return -1;
+     }
+
+     return 0;
+  }
+
+  /*private*/
   resolvePair(hand1, hand2) {
     let bestCards1, bestCards2;
      bestCards1 = PairResolver.tryResolvePair(hand1);
@@ -29,10 +52,11 @@ export default class HandsComparer {
      } else if(bestCards2.length !== 0) {
        return -1;
      }
-     
+
      return 0;
   }
 
+  /*private*/
   resolveHighCard(hand1, hand2) {
     let bestCards1 = HighCardResolver.resolveHighCard(hand1),
       bestCards2 = HighCardResolver.resolveHighCard(hand2);

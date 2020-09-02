@@ -5,7 +5,7 @@ export default class Hand {
   constructor(cards) {
     if(cards !== undefined) {
       this._cards = Array.from(cards)
-        .sort((a,b) => { return a.compareTo(b); }).reverse().slice(0, 5);
+        .sort((a,b) => { return a.compareTo(b); }).reverse();
     } else {
       throw new Error('Undefined hand is not allowed');
     }

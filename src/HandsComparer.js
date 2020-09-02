@@ -9,7 +9,7 @@ export default class HandsComparer {
       hand1Resolved = PairResolver.tryResolvePair(hand1);
       hand2Resolved = PairResolver.tryResolvePair(hand2);
 
-      if(!hand1Resolved.isEmpty())
+      if(hand1Resolved.length !== 0)
       {
         return 1;
       } else {

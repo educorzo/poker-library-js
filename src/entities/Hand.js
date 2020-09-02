@@ -13,23 +13,11 @@ export default class Hand {
   getCards() {
     return this._cards;
   }
-/*
-  compareTo(that) {
-    /*let thisHand = HighCardResolver.resolveHighCard(this),
-      thatHand = HighCardResolver.resolveHighCard(that),
-      index = 0,
-      result = 0;
 
-      for(index; index < 5; index++) {
-        result = thisHand._cards[index].compareTo(thatHand._cards[index]);
-        if(result !== 0) {
-          return result;
-        }
-      }
-
-    return result;
+  isEmpty() {
+      return this._cards.length === 0;
   }
-*/
+
   toString(){
     let result = '';
 

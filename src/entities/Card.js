@@ -17,4 +17,8 @@ export default class Card {
   toString() {
     return this._rank.toString() + this._suit;
   }
+
+  areEqual(that) {
+    return this._rank.areEqual(that._rank);
+  }
 }

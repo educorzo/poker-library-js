@@ -4,7 +4,8 @@ import Rank from './Rank.js';
 export default class Hand {
   constructor(cards) {
     if(cards !== undefined) {
-      this._cards = cards;
+      this._cards = Array.from(cards)
+        .sort((a,b) => { return a.compareTo(b); }).reverse().slice(0, 5);
     } else {
       throw new Error('Undefined hand is not allowed');
     }
@@ -16,6 +17,10 @@ export default class Hand {
 
   isEmpty() {
       return this._cards.length === 0;
+  }
+
+  numberOfCards() {
+    return this._cards.length;
   }
 
   toString(){

@@ -14,4 +14,13 @@ describe('Hand', function () {
 
     expect(hand.toString()).toEqual('As Qd');
   });
+
+  it('should keep cards in order', function () {
+    let card = new Card(new Rank('Q'), 's'),
+      card2 = new Card(new Rank('2'), 'd'),
+      card3 = new Card(new Rank('A'), 'd'),
+      hand = new Hand(new Set([card, card2, card3]));
+
+      expect(hand.toString()).toEqual('Ad Qs 2d');
+  });
 });

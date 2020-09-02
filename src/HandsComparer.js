@@ -6,25 +6,23 @@ import TwoPairsResolver from './resolvers/TwoPairsResolver.js';
 export default class HandsComparer {
 
    compare(hand1, hand2) {
-     let bestCards1, bestCards2, result = 0;
-     result = this.resolveTwoPairs(hand1, hand2);
+     let bestCards1, bestCards2,
+      result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
 
      if(result == 0) {
-       result = this.resolvePair(hand1, hand2);
+       result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
        if(result == 0) {
-         return this.resolveHighCard(hand1, hand2);
+        return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
        }
-       return result;
-     } else {
-       return result;
      }
+     return result;
   }
 
   /*private*/
-  resolveTwoPairs(hand1, hand2) {
+  resolve(hand1, hand2, resolver) {
     let bestCards1, bestCards2;
-     bestCards1 = TwoPairsResolver.tryResolveTwoPairs(hand1);
-     bestCards2 = TwoPairsResolver.tryResolveTwoPairs(hand2);
+     bestCards1 = resolver(hand1);
+     bestCards2 = resolver(hand2);
 
      if(bestCards1.length !== 0) {
        if(bestCards2.length !== 0) {
@@ -36,32 +34,6 @@ export default class HandsComparer {
      }
 
      return 0;
-  }
-
-  /*private*/
-  resolvePair(hand1, hand2) {
-    let bestCards1, bestCards2;
-     bestCards1 = PairResolver.tryResolvePair(hand1);
-     bestCards2 = PairResolver.tryResolvePair(hand2);
-
-     if(bestCards1.length !== 0) {
-       if(bestCards2.length !== 0) {
-         return 0;
-       }
-       return 1;
-     } else if(bestCards2.length !== 0) {
-       return -1;
-     }
-
-     return 0;
-  }
-
-  /*private*/
-  resolveHighCard(hand1, hand2) {
-    let bestCards1 = HighCardResolver.resolveHighCard(hand1),
-      bestCards2 = HighCardResolver.resolveHighCard(hand2);
-
-    return this.resolveByHighestCard(bestCards1, bestCards2);
   }
 
   /*private*/

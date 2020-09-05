@@ -6,6 +6,10 @@ export default class Card {
     this._suit = suit;
   }
 
+  isDirectlyBelow(that) {
+    return this._rank.isDirectlyBelow(that._rank);
+  }
+
   compareTo(that) {
     if(that !== undefined) {
       return this._rank.compareTo(that._rank);

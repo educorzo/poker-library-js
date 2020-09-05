@@ -57,4 +57,22 @@ describe('Comparing two hands', function () {
 			});
 		});
 	});
+
+	describe('and there is a straight', function () {
+		const testCases = [
+			{ hand1: '8c 4s 6s 7d 5c', hand2: '2d 2h 3d 3s 5h', winnerHand: 'player 1' },
+			{ hand1: '2d 2h 3d 3s 5h', hand2: '8c 4s 6s 7d 5c', winnerHand: 'player 2' },
+			{ hand1: '7c 3s 5s 6d 4c', hand2: '8c 4s 6s 7d 5c', winnerHand: 'player 2' },
+		];
+
+		testCases.forEach((test, index) => {
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
+			});
+		});
+	});
 });

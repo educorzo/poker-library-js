@@ -2,19 +2,24 @@ import Card from './entities/Card.js';
 import HighCardResolver from './resolvers/HighCardResolver.js';
 import PairResolver from './resolvers/PairResolver.js';
 import TwoPairsResolver from './resolvers/TwoPairsResolver.js';
+import StraightResolver from './resolvers/StraightResolver.js';
 
 export default class HandsComparer {
 
    compare(hand1, hand2) {
      let bestCards1, bestCards2,
-      result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
+      result = this.resolve(hand1, hand2, StraightResolver.tryResolveStraight);
 
-     if(result == 0) {
-       result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
-       if(result == 0) {
-        return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
-       }
-     }
+      if(result == 0) {
+          result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
+        if(result == 0) {
+          result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
+          if(result == 0) {
+           return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
+          }
+        }
+      }
+
      return result;
   }
 

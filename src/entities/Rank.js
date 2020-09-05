@@ -11,6 +11,23 @@ export default class Rank {
     return this._rank;
   }
 
+  isDirectlyBelow(that) {
+    let thisValue = Rank.validRanks.findIndex(this.hasEqualValue, this),
+      thatValue;
+
+    if(that !== undefined) {
+      thatValue = Rank.validRanks.findIndex(that.hasEqualValue, that);
+    } else {
+      return false;
+    }
+
+    if(thisValue === 0 && thatValue === Rank.validRanks.length -1) {
+      return true;
+    }
+
+    return thisValue - thatValue === 1;
+  }
+
   compareTo(that) {
     let thisValue = Rank.validRanks.findIndex(this.hasEqualValue, this),
       thatValue;

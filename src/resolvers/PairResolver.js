@@ -1,35 +1,18 @@
 import Hand from './../entities/Hand.js';
+import PairsFinder from './PairsFinder.js';
 
 export default class PairResolver {
 
   static tryResolvePair(hand) {
     let cards = hand.getCards(),
-      pair = [],
-      kickers = [],
-      j,
-      counter = 0;
+      result = PairsFinder.getPairs(cards);
 
-    cards.forEach((card, i) => {
-      for(j = 0 + counter; j < cards.length; j++) {
-        if(card.areEqual(cards[j]) && i !== j) {
-          pair.push(card);
-          pair.push(cards[j]);
-        }
-      }
-      if(!pair.includes(card))
-      {
-        kickers.push(card);
-      }
-
-      counter++;
-    });
-
-    if(pair.length !== 0) {
-      if(pair.length > 2) {
+    if(result.pairs.length !== 0) {
+      if(result.pairs.length > 2) {
         throw new Error('Two pairs in PairResolver is not allowed');
       }
 
-      return pair.concat(kickers.slice(0,3));
+      return result.pairs.concat(result.kickers.slice(0,3));
     }
 
     return [];

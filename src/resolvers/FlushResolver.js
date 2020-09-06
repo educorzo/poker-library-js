@@ -2,7 +2,7 @@ import Hand from './../entities/Hand.js';
 import Card from './../entities/Card.js';
 import Suit from './../entities/Suit.js';
 
-export default class FlusResolver {
+export default class FlushResolver {
 
   static tryResolveFlush(hand) {
     let cards = hand.getCards(),

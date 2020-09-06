@@ -1,5 +1,4 @@
 import Card from './Card.js';
-import Rank from './Rank.js';
 
 export default class Hand {
   constructor(cards) {

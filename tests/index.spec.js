@@ -75,4 +75,22 @@ describe('Comparing two hands', function () {
 			});
 		});
 	});
+
+	describe('and there is a flush', function () {
+		const testCases = [
+			{ hand1: '8d 4d Td 2d 5d', hand2: '8c 7d 6s 5c 4s', winnerHand: 'player 1' },
+			{ hand1: '8c 7d 6s 5c 4s', hand2: '8d 4d Td 2d 5d', winnerHand: 'player 2' },
+			{ hand1: '8c 4c Kc 2c 5c', hand2: '8d 4d Td 2d 5d', winnerHand: 'player 1' },
+		];
+
+		testCases.forEach((test, index) => {
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
+			});
+		});
+	});
 });

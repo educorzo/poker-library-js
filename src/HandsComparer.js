@@ -2,6 +2,7 @@ import Card from './entities/Card.js';
 import HighCardResolver from './resolvers/HighCardResolver.js';
 import PairResolver from './resolvers/PairResolver.js';
 import TwoPairsResolver from './resolvers/TwoPairsResolver.js';
+import TrioResolver from './resolvers/TrioResolver.js';
 import StraightResolver from './resolvers/StraightResolver.js';
 import FlushResolver from './resolvers/FlushResolver.js';
 
@@ -13,16 +14,19 @@ export default class HandsComparer {
 
       if(result == 0) {
         result = this.resolve(hand1, hand2, StraightResolver.tryResolveStraight);
-      if(result == 0) {
-        result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
         if(result == 0) {
-          result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
+          result = this.resolve(hand1, hand2, TrioResolver.tryResolveTrio);
           if(result == 0) {
-           return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
+            result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
+            if(result == 0) {
+              result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
+              if(result == 0) {
+               return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
+              }
+            }
           }
         }
       }
-    }
 
      return result;
   }

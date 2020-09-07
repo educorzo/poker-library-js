@@ -10,6 +10,10 @@ export default class Card {
     return this._suit;
   }
 
+  getRank() {
+    return this._rank;
+  }
+
   isDirectlyBelow(that) {
     return this._rank.isDirectlyBelow(that._rank);
   }

@@ -58,6 +58,24 @@ describe('Comparing two hands', function () {
 		});
 	});
 
+	describe('and there is three of a Kind', function () {
+		const testCases = [
+			{ hand1: 'Td Ts Tc 2d 5d', hand2: 'Ad Ah Qd Qs 5h', winnerHand: 'player 1' },
+			{ hand1: 'Ad Ah Qd Qs 5h', hand2: 'Td Ts Tc 2d 5d', winnerHand: 'player 2' },
+			{ hand1: '9d 9h 9d Qs 5h', hand2: 'Td Ts Tc 2d 5d', winnerHand: 'player 2' },
+		];
+
+		testCases.forEach((test, index) => {
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
+			});
+		});
+	});
+
 	describe('and there is a straight', function () {
 		const testCases = [
 			{ hand1: '8c 4s 6s 7d 5c', hand2: '2d 2h 3d 3s 5h', winnerHand: 'player 1' },

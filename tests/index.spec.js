@@ -111,4 +111,22 @@ describe('Comparing two hands', function () {
 			});
 		});
 	});
+
+	describe('and there is a full house', function () {
+		const testCases = [
+			{ hand1: '8d 2c 8c 2d 2s', hand2: '8d 4d Td 2d 5d', winnerHand: 'player 1' },
+			{ hand1: '8d 4d Td 2d 5d', hand2: '8d 2c 8c 2d 2s',  winnerHand: 'player 2' },
+			{ hand1: '8d Kc 8c Kd Ks', hand2: 'Ad Ac As 4c 4d', winnerHand: 'player 2' },
+		];
+
+		testCases.forEach((test, index) => {
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
+			});
+		});
+	});
 });

@@ -147,4 +147,22 @@ describe('Comparing two hands', function () {
 			});
 		});
 	});
+
+	describe('and there is a straight flush', function () {
+		const testCases = [
+			{ hand1: '5s 6s 7s 8s 9s', hand2: 'As Ad Ah Ac 2d', winnerHand: 'player 1' },
+			{ hand2: 'As Ad Ah Ac 2d', hand1: '5s 6s 7s 8s 9s', winnerHand: 'player 1' },
+			{ hand1: '5s 6s 7s 8s 9s', hand2: 'Ts Js Qs Ks As', winnerHand: 'player 2' } //Royal flush
+		];
+
+		testCases.forEach((test, index) => {
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
+			});
+		});
+	});
 });

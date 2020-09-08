@@ -1,31 +1,18 @@
 import Hand from './../entities/Hand.js';
+import Grouper from './Grouper.js';
 
 export default class PairsFinder {
 
   static getPairs(cards) {
-    let pairs = [],
-      kickers = [],
-      j,
-      counter = 0;
+    let result = [],
+      cardsGroupByRank = Grouper.groupByRank(cards);
 
-    cards.forEach((card, i) => {
-      for(j = 0 + counter; j < cards.length; j++) {
-        if(card.areEqual(cards[j]) && i !== j) {
-          pairs.push(card);
-          pairs.push(cards[j]);
-        }
+    cardsGroupByRank.forEach((group) => {
+      if(group.length === 2) {
+        result = result.concat(group);
       }
-      if(!pairs.includes(card))
-      {
-        kickers.push(card);
-      }
-
-      counter++;
     });
 
-    return {
-      'pairs' : pairs,
-      'kickers' : kickers
-    };
+    return result;
   }
 }

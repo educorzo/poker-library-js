@@ -11,8 +11,8 @@ export default class FullHouseResolver {
       kickers = cards.filter(n => !trio.includes(n)),
       pairs = PairsFinder.getPairs(kickers);
 
-    if(trio.length > 0 && pairs.pairs.length > 0) {
-        return trio.concat(pairs.pairs.slice(0,2));
+    if(trio.length > 0 && pairs.length > 0) {
+        return trio.concat(pairs.slice(0,2));
     }
 
     return [];

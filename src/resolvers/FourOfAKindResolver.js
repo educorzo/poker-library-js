@@ -1,11 +1,12 @@
 import Hand from './../entities/Hand.js';
 import Card from './../entities/Card.js';
+import Grouper from './Grouper.js';
 
 export default class FourOfAKindResolver {
 
   static tryResolveFourOfAKind(hand) {
     let cards = hand.getCards(),
-        cardsGroupByRank = FourOfAKindResolver.groupByRank(cards),
+        cardsGroupByRank = Grouper.groupByRank(cards),
         result = [],
         kickers = [];
 
@@ -21,21 +22,4 @@ export default class FourOfAKindResolver {
     }
     return result;
   }
-
-  /*private*/
-  static groupByRank(cards) {
-      const map = new Map();
-
-      cards.forEach((card) => {
-           const key = card.getRank().toString();
-           const collection = map.get(key);
-           if (!collection) {
-               map.set(key, [card]);
-           } else {
-               collection.push(card);
-           }
-      });
-
-      return map;
-    }
 }

@@ -6,25 +6,29 @@ import TrioResolver from './resolvers/TrioResolver.js';
 import StraightResolver from './resolvers/StraightResolver.js';
 import FlushResolver from './resolvers/FlushResolver.js';
 import FullHouseResolver from './resolvers/FullHouseResolver.js';
+import FourOfAKindResolver from './resolvers/FourOfAKindResolver.js';
 
 export default class HandsComparer {
 
    compare(hand1, hand2) {
      let bestCards1, bestCards2,
-      result = this.resolve(hand1, hand2, FullHouseResolver.tryResolveFullHouse);
+      result = this.resolve(hand1, hand2, FourOfAKindResolver.tryResolveFourOfAKind);
 
       if(result == 0) {
-        result = this.resolve(hand1, hand2, FlushResolver.tryResolveFlush);
+        result = this.resolve(hand1, hand2, FullHouseResolver.tryResolveFullHouse);
         if(result == 0) {
-          result = this.resolve(hand1, hand2, StraightResolver.tryResolveStraight);
+          result = this.resolve(hand1, hand2, FlushResolver.tryResolveFlush);
           if(result == 0) {
-            result = this.resolve(hand1, hand2, TrioResolver.tryResolveTrio);
+            result = this.resolve(hand1, hand2, StraightResolver.tryResolveStraight);
             if(result == 0) {
-              result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
+              result = this.resolve(hand1, hand2, TrioResolver.tryResolveTrio);
               if(result == 0) {
-                result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
+                result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
                 if(result == 0) {
-                 return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
+                  result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
+                  if(result == 0) {
+                   return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
+                  }
                 }
               }
             }

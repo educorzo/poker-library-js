@@ -129,4 +129,22 @@ describe('Comparing two hands', function () {
 			});
 		});
 	});
+
+	describe('and there is a four of a kind', function () {
+		const testCases = [
+			{ hand1: '9s 9c 9d 9h 2d', hand2: '8d 2c 8c 2d 2s', winnerHand: 'player 1' },
+			{ hand1: '8d 2c 8c 2d 2s', hand2: '9s 9c 9d 9h 2d',  winnerHand: 'player 2' },
+			{ hand1: '8d Ac Ad Ah As', hand2: '9s 9c 9d 9h 2d',  winnerHand: 'player 1' },
+		];
+
+		testCases.forEach((test, index) => {
+			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
+				it(`should win ${test.winnerHand}`, () =>  {
+					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
+
+					expect(winnerHand).toEqual(test.winnerHand);
+				});
+			});
+		});
+	});
 });

@@ -1,14 +1,7 @@
 import * as Poker from './../src/index.js';
 
 describe('Comparing two hands', function () {
-	describe('and there is nothing special', function () {
-		const testCases = [
-    	{ hand1: '2d Ad 3d 7s 5h', hand2: '4d 2s 3s 7d 5c', winnerHand: 'player 1' },
-    	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: 'player 2' },
-			{ hand1: '2d Ad 3d 7s 5h', hand2: '2s Ah 3s 7d 5s', winnerHand: 'both' },
-			{ hand1: 'Ad 4h 3d 8s 5h', hand2: 'Ah 2s 3s 7d 5s', winnerHand: 'player 1' }, //Tie in A card
-		];
-
+	const tests = function(testCases) {
 		testCases.forEach((test, index) => {
 			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
 				it(`should win ${test.winnerHand}`, () =>  {
@@ -17,7 +10,18 @@ describe('Comparing two hands', function () {
 					expect(winnerHand).toEqual(test.winnerHand);
 				});
 			});
- 		});
+		});
+	};
+
+	describe('and there is nothing special', function () {
+		const testCases = [
+    	{ hand1: '2d Ad 3d 7s 5h', hand2: '4d 2s 3s 7d 5c', winnerHand: 'player 1' },
+    	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: 'player 2' },
+			{ hand1: '2d Ad 3d 7s 5h', hand2: '2s Ah 3s 7d 5s', winnerHand: 'both' },
+			{ hand1: 'Ad 4h 3d 8s 5h', hand2: 'Ah 2s 3s 7d 5s', winnerHand: 'player 1' }, //Tie in A card
+		];
+
+		tests(testCases);
 	});
 
 	describe('and there is a pair', function () {
@@ -28,15 +32,7 @@ describe('Comparing two hands', function () {
 			{ hand1: 'Ad Ah Qd 7s 5h', hand2: 'Ad As 3s 7d 5c', winnerHand: 'player 1' },
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 
 	describe('and there is two pairs', function () {
@@ -47,15 +43,7 @@ describe('Comparing two hands', function () {
 			{ hand1: 'Ad Ah Qd Qs 5h', hand2: 'Ad As Qc Qh 2c', winnerHand: 'player 1' },
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 
 	describe('and there is three of a Kind', function () {
@@ -65,15 +53,7 @@ describe('Comparing two hands', function () {
 			{ hand1: '9d 9h 9d Qs 5h', hand2: 'Td Ts Tc 2d 5d', winnerHand: 'player 2' },
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 
 	describe('and there is a straight', function () {
@@ -83,15 +63,7 @@ describe('Comparing two hands', function () {
 			{ hand1: '7c 3s 5s 6d 4c', hand2: '8c 4s 6s 7d 5c', winnerHand: 'player 2' },
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 
 	describe('and there is a flush', function () {
@@ -101,15 +73,7 @@ describe('Comparing two hands', function () {
 			{ hand1: '8c 4c Kc 2c 5c', hand2: '8d 4d Td 2d 5d', winnerHand: 'player 1' },
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 
 	describe('and there is a full house', function () {
@@ -119,15 +83,7 @@ describe('Comparing two hands', function () {
 			{ hand1: '8d Kc 8c Kd Ks', hand2: 'Ad Ac As 4c 4d', winnerHand: 'player 2' },
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 
 	describe('and there is a four of a kind', function () {
@@ -137,15 +93,7 @@ describe('Comparing two hands', function () {
 			{ hand1: '8d Ac Ad Ah As', hand2: '9s 9c 9d 9h 2d',  winnerHand: 'player 1' },
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 
 	describe('and there is a straight flush', function () {
@@ -155,14 +103,6 @@ describe('Comparing two hands', function () {
 			{ hand1: '5s 6s 7s 8s 9s', hand2: 'Ts Js Qs Ks As', winnerHand: 'player 2' } //Royal flush
 		];
 
-		testCases.forEach((test, index) => {
-			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${test.winnerHand}`, () =>  {
-					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
-
-					expect(winnerHand).toEqual(test.winnerHand);
-				});
-			});
-		});
+		tests(testCases);
 	});
 });

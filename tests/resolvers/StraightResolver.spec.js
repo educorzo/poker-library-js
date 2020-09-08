@@ -8,7 +8,8 @@ describe('StraightResolver', function () {
     { hand: '8c 4s 6s 7d 5c',  expectedHand: '8c 7d 6s 5c 4s' },
     { hand: '8c 4s 6s 7d 5c 9d',  expectedHand: '9d 8c 7d 6s 5c' },
     { hand: 'Ts 8c 4s 6s 7d 5c',  expectedHand: '8c 7d 6s 5c 4s' },
-    { hand: '2d 3h Ad 5h Ts 7h',  expectedHand: ' ' }
+    { hand: '2d 3h Ad 5h Ts 7h',  expectedHand: ' ' },
+    { hand: '8c 4s 6s 7d 5c 2d',  expectedHand: '8c 7d 6s 5c 4s' },
   ];
 
   testCases.forEach((test, index) => {

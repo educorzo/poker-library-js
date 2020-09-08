@@ -8,7 +8,7 @@ export default class StraightResolver {
       i = 1;
 
     for(i; i< cards.length; i++) {
-      if(!cards[i - 1].isDirectlyBelow(cards[i])) {
+      if(!cards[i - 1].isDirectlyBelow(cards[i]) && straight.length !== 5) {
         straight = [];
       }
       straight.push(cards[i]);
@@ -17,7 +17,7 @@ export default class StraightResolver {
     if(straight.length >= 5) {
       return straight.slice(0, 5);
     }
-    
+
     return [];
   }
 }

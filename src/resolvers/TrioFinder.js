@@ -3,7 +3,7 @@ import Grouper from './Grouper.js';
 
 export default class TrioFinder {
 
-  getTrio(cards) {
+  static getTrio(cards) {
     let result = [],
       cardsGroupByRank = Grouper.groupByRank(cards);
 

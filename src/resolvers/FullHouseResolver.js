@@ -6,8 +6,7 @@ export default class FullHouseResolver {
 
   static tryResolveFullHouse(hand) {
     let cards = hand.getCards(),
-      trioFinder = new TrioFinder(),
-      trio = trioFinder.getTrio(cards),
+      trio = TrioFinder.getTrio(cards),
       kickers = cards.filter(n => !trio.includes(n)),
       pairs = PairsFinder.getPairs(kickers);
 

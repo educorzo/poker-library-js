@@ -10,10 +10,8 @@ describe('HandParser', function () {
 
   describe('when there are less than five cards', function () {
       it('should throw exception', () => {
-        let hand = HandParser.parseHand('2h 2s As Ad 3d');
-
         expect(function(){HandParser.parseHand('2d Ad 3d Js')})
-          .toThrow(new Error('Hand with less than five cards is not allowed'));
+          .toThrow(new Error('A hand with less than 5 cards is not allowed'));
       });
   });
 });

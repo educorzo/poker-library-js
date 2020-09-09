@@ -8,8 +8,8 @@ export function parseHand(handRaw) {
     cards.add(CardParser.parseCard(cardRaw));
   });
 
-  if(cards.length < 5) {
-    throw new Error('Hand with less than five cards is not allowed');
+  if(cards.size < 5) {
+    throw new Error('A hand with less than 5 cards is not allowed');
   }
 
   return new Hand(cards);

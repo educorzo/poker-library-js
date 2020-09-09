@@ -1,14 +1,19 @@
 {
-  "name": "poker-library",
-  "version": "1.0.0",
-  "description": "Rules of poker",
-  "main": "index.js",
+  "name": "@educorzo/poker-library",
+  "version": "1.0.1",
+  "description": "Tools for playing poker",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "source": "src/index.js",
   "scripts": {
-    "test": "karma start karma.conf"
+    "test": "karma start karma.conf",
+    "build": "microbundle",
+    "prepublish": "npm run build"
   },
   "keywords": [],
-  "author": "ecorzo",
-  "license": "ISC",
+  "author": "eduardo corzo <eduardocorzo@outlook.com> (https://github.com/educorzo)",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.1",
     "@babel/preset-env": "^7.11.0",
@@ -24,10 +29,12 @@
     "karma-jasmine-html-reporter": "^1.5.4",
     "karma-sourcemap-loader": "^0.3.8",
     "karma-webpack": "^4.0.2",
+    "microbundle": "^0.12.3",
     "webpack": "^4.44.1"
   },
   "dependencies": {
     "eslint-plugin-compat": "^3.8.0",
     "webpack-karma-jasmine": "^4.0.0"
-  }
+  },
+   "files": ["dist", "index.d.ts", "index.js.flow", "package.json", "README.md"]
 }

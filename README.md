@@ -11,7 +11,7 @@ $ npm install
 
 Run test
 ```sh
-$ npm install
+$ npm test
 ```
 
 EsLint is still not configured, it will be added in future iterations.

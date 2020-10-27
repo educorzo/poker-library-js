@@ -3,7 +3,7 @@ import * as Converter from './utils/WinnerConverter.js';
 
 describe('Comparing two hands', function () {
 	const tests = function(testCases) {
-		testCases.forEach((test, index) => {
+		testCases.forEach((test) => {
 			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
 				it(`should win ${Converter.winnerHand(test.hand1, test.hand2, test.winnerHand)}`, () =>  {
 					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);

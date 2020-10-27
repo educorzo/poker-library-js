@@ -1,5 +1,3 @@
-import Card from './Card.js';
-
 export default class Hand {
   constructor(cards) {
     if(cards !== undefined) {

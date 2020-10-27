@@ -1,5 +1,3 @@
-import Hand from './../entities/Hand.js';
-import Card from './../entities/Card.js';
 import Grouper from './Grouper.js';
 
 export default class FourOfAKindResolver {

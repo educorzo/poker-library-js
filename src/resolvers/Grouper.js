@@ -1,5 +1,3 @@
-import Hand from './../entities/Hand.js';
-
 export default class Grouper {
 
   static groupByRank(cards) {

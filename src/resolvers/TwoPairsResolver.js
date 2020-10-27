@@ -1,6 +1,4 @@
-import Hand from './../entities/Hand.js';
 import PairsFinder from './PairsFinder.js';
-import Grouper from './Grouper.js';
 
 export default class TwoPairsResolver {
 

@@ -1,4 +1,3 @@
-import Hand from './../entities/Hand.js';
 import TrioFinder from './TrioFinder.js';
 
 export default class TrioResolver {

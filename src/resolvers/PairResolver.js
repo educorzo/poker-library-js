@@ -1,4 +1,3 @@
-import Hand from './../entities/Hand.js';
 import PairsFinder from './PairsFinder.js';
 
 export default class PairResolver {

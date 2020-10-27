@@ -1,5 +1,3 @@
-import Rank from './Rank.js';
-
 export default class Card {
   constructor(rank, suit) {
     this._rank = rank;

@@ -1,4 +1,3 @@
-import Hand from './../entities/Hand.js';
 import Grouper from './Grouper.js';
 
 export default class PairsFinder {

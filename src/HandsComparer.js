@@ -1,4 +1,3 @@
-import Card from './entities/Card.js';
 import HighCardResolver from './resolvers/HighCardResolver.js';
 import PairResolver from './resolvers/PairResolver.js';
 import TwoPairsResolver from './resolvers/TwoPairsResolver.js';
@@ -11,54 +10,47 @@ import StraightFlushResolver from './resolvers/StraightFlushResolver.js';
 
 export default class HandsComparer {
 
-   compare(hand1, hand2) {
-     let bestCards1, bestCards2,
-      result = this.resolve(hand1, hand2, StraightFlushResolver.tryResolveStraightFlush);
-      
-      if(result == 0) {
-        result = this.resolve(hand1, hand2, FourOfAKindResolver.tryResolveFourOfAKind);
-        if(result == 0) {
-          result = this.resolve(hand1, hand2, FullHouseResolver.tryResolveFullHouse);
-          if(result == 0) {
-            result = this.resolve(hand1, hand2, FlushResolver.tryResolveFlush);
-            if(result == 0) {
-              result = this.resolve(hand1, hand2, StraightResolver.tryResolveStraight);
-              if(result == 0) {
-                result = this.resolve(hand1, hand2, TrioResolver.tryResolveTrio);
-                if(result == 0) {
-                  result = this.resolve(hand1, hand2, TwoPairsResolver.tryResolveTwoPairs);
-                  if(result == 0) {
-                    result = this.resolve(hand1, hand2, PairResolver.tryResolvePair);
-                    if(result == 0) {
-                     return this.resolve(hand1, hand2, HighCardResolver.resolveHighCard);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+  compare(hand1, hand2) {
+    let me = this,
+      resolvers = [
+        StraightFlushResolver.tryResolveStraightFlush,
+        FourOfAKindResolver.tryResolveFourOfAKind,
+        FullHouseResolver.tryResolveFullHouse,
+        FlushResolver.tryResolveFlush,
+        StraightResolver.tryResolveStraight,
+        TrioResolver.tryResolveTrio,
+        TwoPairsResolver.tryResolveTwoPairs,
+        PairResolver.tryResolvePair,
+        HighCardResolver.resolveHighCard
+      ], result = 0;
 
-     return result;
+    resolvers.some(function (resolver) {
+      result = me.resolve(hand1, hand2, resolver);
+
+      if (result !== 0) {
+        return result;
+      }
+    });
+
+    return result;
   }
 
   /*private*/
   resolve(hand1, hand2, resolver) {
     let bestCards1, bestCards2;
-     bestCards1 = resolver(hand1);
-     bestCards2 = resolver(hand2);
+    bestCards1 = resolver(hand1);
+    bestCards2 = resolver(hand2);
 
-     if(bestCards1.length !== 0) {
-       if(bestCards2.length !== 0) {
-         return this.resolveByHighestCard(bestCards1, bestCards2);
-       }
-       return 1;
-     } else if(bestCards2.length !== 0) {
-       return -1;
-     }
+    if (bestCards1.length !== 0) {
+      if (bestCards2.length !== 0) {
+        return this.resolveByHighestCard(bestCards1, bestCards2);
+      }
+      return 1;
+    } else if (bestCards2.length !== 0) {
+      return -1;
+    }
 
-     return 0;
+    return 0;
   }
 
   /*private*/
@@ -66,9 +58,9 @@ export default class HandsComparer {
     let index = 0,
       result = 0;
 
-    for(index; index < 5; index++) {
+    for (index; index < 5; index++) {
       result = hand1[index].compareTo(hand2[index]);
-      if(result !== 0) {
+      if (result !== 0) {
         return result;
       }
     }

@@ -1,10 +1,9 @@
 # Poker-library-js
 A library for poker in javascript.
+This library is accessible via [npm](https://npmjs.com/package/@educorzo/poker-library) too.
 
 ## Build
-If you do not want to build it check: https://npmjs.com/package/@educorzo/poker-library
-
-Install dependencies and devDependencies.
+Install dependencies.
 ```sh
 $ npm install
 ```
@@ -20,9 +19,11 @@ EsLint is still not configured, it will be added in future iterations.
 Compare two hands by using:
 ```
     var player1 = '2s 3d 4h 5s 6d',
-        player2 = 'Ts Js Qs Kd As'
-    poker.compareTwoHands(player1, player2);
+        player2 = 'Ts Js Qs Kd As',
+        result = poker.compareTwoHands(player1, player2);
 ```
+It returns a number greater than 0 if first parameter has a better hand than second parameter. If there is a tie, it returns 0. A number lower than 0 is returned when second parameter has the best hand.
+
 Both parameters are strings with cards separeted by spaces.
 A suit is represented like this:
 - 's' for spades

@@ -1,4 +1,3 @@
-import Hand from './../../src/entities/Hand.js';
 import PairResolver from './../../src/resolvers/PairResolver.js';
 import * as HandParser from './../../src/parsers/HandParser.js';
 import * as Printer from './../utils/ArrayOfCardsToString.js';
@@ -10,7 +9,7 @@ describe('PairResolver', function () {
     { hand: '2d 8h Ad 5h 7s', expectedHand: ' ' },
   ];
 
-  testCases.forEach((test, index) => {
+  testCases.forEach((test) => {
     describe(`with hand ${test.hand}`, () => {
       it('should return pair and kickers in order of importance', () =>  {
         let hand = HandParser.parseHand(test.hand);

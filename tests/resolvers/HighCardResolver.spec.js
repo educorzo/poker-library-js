@@ -1,4 +1,3 @@
-import Hand from './../../src/entities/Hand.js';
 import HighCardResolver from './../../src/resolvers/HighCardResolver.js';
 import * as HandParser from './../../src/parsers/HandParser.js';
 import * as Printer from './../utils/ArrayOfCardsToString.js';

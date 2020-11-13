@@ -1,4 +1,3 @@
-import Hand from './../../src/entities/Hand.js';
 import StraightResolver from './../../src/resolvers/StraightResolver.js';
 import * as HandParser from './../../src/parsers/HandParser.js';
 import * as Printer from './../utils/ArrayOfCardsToString.js';
@@ -12,7 +11,7 @@ describe('StraightResolver', function () {
     { hand: '8c 4s 6s 7d 5c 2d',  expectedHand: '8c 7d 6s 5c 4s' },
   ];
 
-  testCases.forEach((test, index) => {
+  testCases.forEach((test) => {
     describe(`with hand ${test.hand}`, () => {
       it('should return a straight of five cards in order of importance', () =>  {
         let hand = HandParser.parseHand(test.hand);

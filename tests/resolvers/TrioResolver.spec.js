@@ -1,4 +1,3 @@
-import Hand from './../../src/entities/Hand.js';
 import TrioResolver from './../../src/resolvers/TrioResolver.js';
 import * as HandParser from './../../src/parsers/HandParser.js';
 import * as Printer from './../utils/ArrayOfCardsToString.js';
@@ -10,7 +9,7 @@ describe('TrioResolver', function () {
     { hand: '2d 2h 2s 5h 7s Ad As Ah',  expectedHand: 'Ah As Ad 7s 5h'}
   ];
 
-  testCases.forEach((test, index) => {
+  testCases.forEach((test) => {
     describe(`with hand ${test.hand}`, () => {
       it('should return trio and kickers in order of importance', () =>  {
         let hand = HandParser.parseHand(test.hand);

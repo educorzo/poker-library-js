@@ -11,7 +11,12 @@
     "build": "microbundle",
     "prepublish": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "poker",
+    "hands",
+    "compare",
+    "random"
+  ],
   "author": "eduardo corzo <eduardocorzo@outlook.com> (https://github.com/educorzo)",
   "license": "MIT",
   "devDependencies": {

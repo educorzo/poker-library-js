@@ -45,7 +45,7 @@ Get random hands using the RandomHandGenerator:
 
     randomHandGenerator.getRoyalFlush();
 ```
-RandomHandGenerator must be created with a random numbers generator (between 0 and 1), such as Math.random. By using its methods, it will return a string with the hand representation.
+RandomHandGenerator must be created with a random numbers generator (between 0 and 1), such as Math.random. By using its methods, it will return a string with a hand representation.
 
 # Representations
 

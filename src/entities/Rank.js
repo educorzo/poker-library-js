@@ -1,6 +1,6 @@
 export default class Rank {
   constructor(rank) {
-    if(!Rank.isValid(rank)) {
+    if (!Rank.isValid(rank)) {
       throw new Error(`${rank} is not a valid rank`);
     }
 
@@ -15,13 +15,13 @@ export default class Rank {
     let thisValue = Rank.validRanks.findIndex(this.hasEqualValue, this),
       thatValue;
 
-    if(that !== undefined) {
+    if (that !== undefined) {
       thatValue = Rank.validRanks.findIndex(that.hasEqualValue, that);
     } else {
       return false;
     }
 
-    if(thisValue === 0 && thatValue === Rank.validRanks.length -1) {
+    if (thisValue === 0 && thatValue === Rank.validRanks.length - 1) {
       return true;
     }
 
@@ -32,17 +32,17 @@ export default class Rank {
     let thisValue = Rank.validRanks.findIndex(this.hasEqualValue, this),
       thatValue;
 
-    if(that !== undefined) {
+    if (that !== undefined) {
       thatValue = Rank.validRanks.findIndex(that.hasEqualValue, that);
     } else {
       thatValue = -1;
     }
 
-    if(thisValue > thatValue) {
+    if (thisValue > thatValue) {
       return 1;
     }
 
-    if(thisValue < thatValue) {
+    if (thisValue < thatValue) {
       return -1;
     }
 
@@ -54,7 +54,17 @@ export default class Rank {
   }
 
   toString() {
-      return this._rank.toString();
+    return this._rank.toString();
+  }
+
+  followingRank() {
+    let index = Rank.validRanks.findIndex(this.hasEqualValue, this);
+
+    if (index === Rank.validRanks.length - 1) {
+      index = -1;
+    }
+
+    return new Rank(Rank.validRanks[index + 1]);
   }
 
   static isValid(rank) {

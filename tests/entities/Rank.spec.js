@@ -1,8 +1,8 @@
 import Rank from './../../src/entities/Rank.js';
 
-describe('Rank', function (){
+describe('Rank', function () {
   it('should throw exception with invalid rank', function () {
-     expect(function(){ new Rank('#')}).toThrow(new Error('# is not a valid rank'));
+    expect(function () { new Rank('#') }).toThrow(new Error('# is not a valid rank'));
   });
 
   describe('when checking a rank', function () {
@@ -32,8 +32,8 @@ describe('Rank', function (){
   });
 
   it('should be represented as string', function () {
-      let rank = new Rank('3');
+    let rank = new Rank('3');
 
-      expect(rank.toString()).toEqual('3');
+    expect(rank.toString()).toEqual('3');
   });
 });

@@ -2,10 +2,10 @@ import * as Poker from './../src/index.js';
 import * as Converter from './utils/WinnerConverter.js';
 
 describe('Comparing two hands', function () {
-	const tests = function(testCases) {
+	const tests = function (testCases) {
 		testCases.forEach((test) => {
 			describe(`with cards ${test.hand1} and ${test.hand2}`, () => {
-				it(`should win ${Converter.winnerHand(test.hand1, test.hand2, test.winnerHand)}`, () =>  {
+				it(`should win ${Converter.winnerHand(test.hand1, test.hand2, test.winnerHand)}`, () => {
 					let winnerHand = Poker.compareTwoHands(test.hand1, test.hand2);
 
 					expect(Converter.winnerHand(test.hand1, test.hand2, winnerHand))
@@ -17,8 +17,8 @@ describe('Comparing two hands', function () {
 
 	describe('and there is nothing special', function () {
 		const testCases = [
-    	{ hand1: '2d Ad 3d 7s 5h', hand2: '4d 2s 3s 7d 5c', winnerHand: '2d Ad 3d 7s 5h' },
-    	{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: '2d Ad 3d 7s 5h' },
+			{ hand1: '2d Ad 3d 7s 5h', hand2: '4d 2s 3s 7d 5c', winnerHand: '2d Ad 3d 7s 5h' },
+			{ hand1: '4d 2s 3s 7d 5c', hand2: '2d Ad 3d 7s 5h', winnerHand: '2d Ad 3d 7s 5h' },
 			{ hand1: '2d Ad 3d 7s 5h', hand2: '2s Ah 3s 7d 5s', winnerHand: 'both' },
 			{ hand1: 'Ad 4h 3d 8s 5h', hand2: 'Ah 2s 3s 7d 5s', winnerHand: 'Ad 4h 3d 8s 5h' } //Tie in A card
 		];
@@ -106,5 +106,15 @@ describe('Comparing two hands', function () {
 		];
 
 		tests(testCases);
+	});
+});
+
+describe('Retrieving random hands', function () {
+	describe('and ask for a royal flush', function () {
+		it('should return a royal flush', function () {
+			let randomHandGenerator = Poker.createRandomHandGenerator(function () { return 0; });
+
+			expect(randomHandGenerator.getRoyalFlush()).toEqual('Td Jd Qd Kd Ad');
+		});
 	});
 });

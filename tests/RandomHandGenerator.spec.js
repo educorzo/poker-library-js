@@ -117,24 +117,31 @@ describe('RandomHandGenerator', function () {
 
     describe('Get high card', function () {
         it('should return a high card', function () {
-            let randomSymbolGenerator = getFakeRandomSymbolGenerator(['h', 'd', 'h', 'c', 'd'], ['2', '4', '5', '6', 'K']),
+            let randomSymbolGenerator = getFakeRandomSymbolGenerator(['h', 'd', 'h', 'c', 'd'], ['3', '7', '5', '6', 'K']),
                 randomHandGenerator = new RandomHandGenerator(random, randomSymbolGenerator);
 
-            expect(randomHandGenerator.getHighCard()).toEqual('2h 4d 5h 6c Kd');
+            expect(randomHandGenerator.getHighCard()).toEqual('3h 7d 5h 6c Kd');
         });
 
         it('should not return a flush', function () {
-            let randomSymbolGenerator = getFakeRandomSymbolGenerator(['h', 'h', 'h', 'h', 'h', 'd', 'c', 'd'], ['2', '4', '5', '6', 'K']),
+            let randomSymbolGenerator = getFakeRandomSymbolGenerator(['h', 'h', 'h', 'h', 'h', 'd', 'c', 'd'], ['2', '4', '5', '6', 'K', '7']),
                 randomHandGenerator = new RandomHandGenerator(random, randomSymbolGenerator);
 
             expect(randomHandGenerator.getHighCard()).not.toEqual('2h 4h 5h 6h Kh');
         });
 
         it('should not return a straight', function () {
-            let randomSymbolGenerator = getFakeRandomSymbolGenerator(['h', 'h', 'd', 'c', 'd'], ['2', '3', '4', '5', '6', 'K']),
+            let randomSymbolGenerator = getFakeRandomSymbolGenerator(['h', 'h', 'd', 'c', 'd'], ['2', '3', '4', '5', '6', '9']),
                 randomHandGenerator = new RandomHandGenerator(random, randomSymbolGenerator);
 
             expect(randomHandGenerator.getHighCard()).not.toEqual('2h 3h 4d 5c 6d');
+        });
+
+        it('should not return a backward straight', function () {
+            let randomSymbolGenerator = getFakeRandomSymbolGenerator(['h', 'd', 'h', 'c', 'd'], ['A', 'K', 'Q', 'J', 'T', '9']),
+                randomHandGenerator = new RandomHandGenerator(random, randomSymbolGenerator);
+
+            expect(randomHandGenerator.getHighCard()).not.toEqual('Ah Kd Qh Jc Td');
         });
     });
 });

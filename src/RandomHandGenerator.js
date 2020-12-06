@@ -153,7 +153,7 @@ export default class RandomHandGenerator {
             rank = this._randomSymbolGenerator.getRandomRank(),
             hand = `${rank}${suit}`,
             i = 0,
-            exceptions = [rank, rank.followingRank()];
+            exceptions = [rank, rank.previousRank(), rank.followingRank()];
 
         for (i; i < 4; i++) {
             suit = this._randomSymbolGenerator.getRandomSuit();

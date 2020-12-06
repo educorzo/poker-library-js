@@ -67,6 +67,16 @@ export default class Rank {
     return new Rank(Rank.validRanks[index + 1]);
   }
 
+  previousRank() {
+    let index = Rank.validRanks.findIndex(this.hasEqualValue, this);
+
+    if (index === 0) {
+      index = Rank.validRanks.length - 1;
+    }
+
+    return new Rank(Rank.validRanks[index - 1]);
+  }
+
   static isValid(rank) {
     return rank !== undefined && rank.length == 1 && Rank.validRanks.includes(rank);
   }

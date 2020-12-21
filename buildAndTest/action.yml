@@ -1,7 +1,0 @@
-name: build and test
-runs:
-  using: ubuntu-latest
-  steps:
-    - run: 
-      name: install-dependencies
-      command: npm install

@@ -1,13 +1,10 @@
 name: build and test
 runs:
-  name: Build and Deploy
   using: ubuntu-latest
   steps:
-  - uses: actions/checkout@v2
-  - name: Use Node.js
-    uses: actions/setup-node@v1
-  - name: npm install, build, and test
-    run: |
+   - name: npm install, build, and test
+     uses: actions/setup-node@v1
+     run: |
       npm install
       npm run build --if-present
       npm run test --if-present

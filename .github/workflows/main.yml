@@ -7,4 +7,5 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: ./addDocker
+      - uses: actions/setup-node@v1
       - uses: ./buildAndTest

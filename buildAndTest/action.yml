@@ -3,7 +3,6 @@ runs:
   using: ubuntu-latest
   steps:
    - name: npm install, build, and test
-     uses: actions/setup-node@v1
      run: |
       npm install
       npm run build --if-present

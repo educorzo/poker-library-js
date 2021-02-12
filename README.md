@@ -31,7 +31,7 @@ $ npm test
 
 Compare two hands by using:
 ```
-    var player1 = '2s 3d 4h 5s 6d',
+    let player1 = '2s 3d 4h 5s 6d',
         player2 = 'Ts Js Qs Kd As',
         result = poker.compareTwoHands(player1, player2);
 ```
@@ -41,7 +41,7 @@ Less than 5 cards are not allowed.
 
 Get random hands using the RandomHandGenerator:
 ```
-    var randomHandGenerator = poker.createRandomHandGenerator(Math.random);
+    let randomHandGenerator = poker.createRandomHandGenerator(Math.random);
 
     randomHandGenerator.getRoyalFlush();
 ```
